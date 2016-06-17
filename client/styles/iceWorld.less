@@ -1,0 +1,238 @@
+@import "colors";
+@import "mixins";
+
+#iceworldBody {
+	.PageBody;
+    font-family: @primaryFont;
+    font-size: @smallerSize !important;
+    .HorizontallyCentered;
+}
+
+#iceworldImageDiv {
+	.PageImageDiv;
+}
+
+#iceworldContainerDiv {
+	.PageContainerDiv;
+}
+
+#iceworldInnerDiv {
+	.PageInnerDiv;
+}
+
+#iceworldTextDiv {
+	.PageTextDiv;
+}
+
+#iceworldScoreDiv {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: @generalBackground;
+    color: @iceColor;
+    padding: 5px;
+}
+
+#iceworldHeaderDiv {
+	font-family: @primaryFont;
+	padding: 5px;
+	margin-bottom: 5px;
+	height: 120px;
+	
+	div {
+		.HorizontallyCentered;
+	}
+	
+	h1 {
+		color: @bigHeaderText;
+	}
+	
+	p {
+		color: @iceColor;
+        font-size: @smallerSize;
+	}
+	
+	#iceworldPen {
+		.FlipY;
+		font-size: 20px;
+	}
+	
+	button {
+		height: 50px;
+		width: 50px;
+		line-height: 50px;
+		font-size: 28px;
+		margin-bottom: 2px;
+		opacity: 0.5;
+		.Circle;
+	}
+	
+	.disabled {
+		background-color: black !important;
+		color: @darkGray !important;
+		opacity: 0.5 !important;
+	}
+	
+	#nextLangButton {
+		background-color: @highlightText;
+		opacity: 1.0;
+		width: 200px;
+	}
+	
+	#testButton {
+		background-color: @highlightText;
+		font-size: 14px;
+	}
+	
+	#purplePenButton {
+		background-color: @xelaiPurple;
+		.FlipY;
+	}
+	
+	#orangePenButton {
+		background-color: @orange;
+		.FlipY;
+	}
+	
+	#addStoneButton {
+		background-color: @mediumGray;
+	}
+	
+	#deleteButton {
+		background-color: @navigationText;
+	}
+	
+	#finalStoneButton {
+		background-color: @jungleColor;
+	}
+	
+	#resetButton {
+		background-color: @oceanColor;
+	}
+	
+	#icebergHintButton {
+		background-color: red;
+		font-size: 14px;
+	}
+	
+	#backButton {
+		//background-color: @brown;
+        background-image: url('images/iceWorld.png');
+        background-size: 100% 100%;
+	    background-repeat: no-repeat;
+	}
+	
+	#currentPen {
+		background-color: white;
+		opacity: 1.0;
+	}
+}
+
+#icebergHintCover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	opacity: 0.5;
+	background-color: @iceColor;
+	font-family: @primaryFont;
+	font-size: 50px;
+	.HorizontallyCentered;
+	visibility: hidden;
+	
+	p {
+		margin-top: 20%;
+	}
+}
+
+#towerVillainDiv {
+	color: @iceColor;
+	
+	#towerVillainImage {
+		width: 45px;
+		height: 45px;
+		.Circle;
+	}
+	
+	#towerInfoButton {
+        width: 45px;
+        height: 45px;
+		background-color: @iceColor;
+        color: @white;
+	}
+}
+
+#towerMiddleDiv {
+	color: @iceColor;
+	
+	button {
+		height: 25px;
+		width: 50%;
+		font-size: 16px;
+		line-height: 25px;
+		opacity: 1.0;
+		background-color: @generalBackground;
+		border: 1px solid @highlightText;
+		.RoundedShape(5px);
+	}
+    
+    #towerLangSelect {
+        color: @black !important;
+    }
+}
+
+#towerHeroDiv {
+	color: @iceColor;
+	
+	#towerHeroImage {
+		width: 45px;
+		height: 45px;
+		.Circle;
+	}
+	
+	sup {
+		font-size: 8px;
+	}
+	
+	button {
+		height: 25px;
+		width: 100%;
+		font-size: 16px;
+		font-family: @secondaryFont;
+		line-height: 21px;
+		opacity: 1.0;
+		background-color: @generalBackground;
+		border: 1px solid @highlightText;
+		margin-bottom: 5px;
+		padding: 2px;
+		.RoundedShape(5px);
+	}
+	
+	.stringChoiceButton {
+		font-family: @primaryFont;
+	}
+	
+	.disabledTower {
+		color: @iceColor;
+		opacity: 0.5;
+		border-color: @iceColor;
+	}
+	
+	#towerBackButton {
+		height: 45px;
+		width: 45px;
+		opacity: 1.0;
+		.Circle;
+        background-image: url('images/iceWorld.png');
+        background-size: 100% 100%;
+	    background-repeat: no-repeat;
+        border: none !important;
+	}
+}
+
+#iceworldSceneDiv {
+	.SceneDiv;
+	background-color: @iceColor;
+}

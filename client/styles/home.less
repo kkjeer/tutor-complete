@@ -1,0 +1,291 @@
+@import "colors";
+@import "mixins";
+
+#homeBody {
+	.PageBody;
+}
+
+#homeImageDiv {
+	.PageImageDiv;
+}
+
+#homeContainerDiv {
+	.PageContainerDiv;
+}
+
+#homeInnerDiv {
+	.PageInnerDiv;
+}
+
+#homeTextDiv {
+	.PageTextDiv;
+}
+
+#homeHeaderDiv {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	padding: 5px;
+	margin-bottom: 5px;
+	
+	h1 {
+		color: @bigHeaderText;
+        font-family: @headerFont;
+	}
+	
+	p {
+		color: @generalText;
+		font-size: 18px;
+		line-height: 1.75;
+		font-family: @secondaryFont;
+	}
+}
+
+//Column divs that hold information about each world
+.homeWorldDiv {
+	.GeneralText;
+	
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	
+	//Headers for world title and difficulty
+	.homeWorldHeader {
+		.HorizontalInParent(90%);
+		.HorizontallyCentered;
+		color: @headerText;
+	}
+}
+	
+	//Container div for the circle with image
+	.homeCircleContainer {
+		width: 200px;
+		height: 200px;
+		.HorizontalInParent(200px);
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border: 1px solid @generalBackground;
+	}
+	
+	//Circular div containing image and text
+	.homeCircle {
+		//relative position needed to place the overlay
+		position: relative;
+		
+		//non-hover size and opacity
+		@homeCircleSize: 90%;
+		width: @homeCircleSize;
+		height: @homeCircleSize;
+		opacity: 1.0;
+		
+		//centering and circle shape
+		.HorizontalInParent(@homeCircleSize);
+		.VerticalInParent(@homeCircleSize);
+		.Circle;
+		
+		//Upon hovering over a circle, ...
+		&:hover {
+			//increase  the circle size
+			@hoverCircleSize: 100%;
+			width: @hoverCircleSize;
+			height: @hoverCircleSize;
+			.HorizontalInParent(@hoverCircleSize);
+			.VerticalInParent(@hoverCircleSize);
+			
+			//decrease the background opacity
+			.homeCircleBackground {
+				opacity: 0.5;
+			}
+			
+			//show the overlay div with text
+			.homeCircleOverlay {
+				visibility: visible;
+				z-index: 1000;
+			}
+		}
+		
+		//Overlay div within circles containing text
+		.homeCircleOverlay {
+			//position the overlay on top of the background circle
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			
+			//give it a circle shape and horizontally center its children
+			.Circle;
+			.HorizontallyCentered;
+			
+			//this technique is used to vertically center its child div
+			display: table;
+			
+			//only visible when the circle is hovered over
+			visibility: hidden;
+			
+			//color and size of text within
+			color: @yellow;
+			font-family: @secondaryFont;
+			font-size: 20px;
+			
+			.homeUnlock {
+				color: @yellow;
+			}
+			.homeMaster {
+				color: @yellow;
+			}
+			
+			//style the child div to be vertically centered within the overlay
+			div {
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+	}
+	
+	//Separate colors and images for each world's circle
+	#world1Circle {
+		.HomeWorldCircle('/images/jungleFerns.png');
+	}
+	
+	#world2Circle {
+		.HomeWorldCircle('/images/oceanWater.png');
+	}
+	
+	#world3Circle {
+		.HomeWorldCircle('/images/iceWorld.png');
+	}
+	
+	.smallCircleContainer {
+		width: 100px;
+		height: 100px;
+		.HorizontalInParent(100px);
+		margin-top: 5px;
+		margin-bottom: 5px;
+		border: 1px solid @generalBackground;
+	}
+	
+	.smallCircle {
+		//relative position needed to place the overlay
+		position: relative;
+		
+		//non-hover size and opacity
+		@smallCircleSize: 100%;
+		width: @smallCircleSize;
+		height: @smallCircleSize;
+		opacity: 1.0;
+		
+		//centering and circle shape
+		.HorizontalInParent(@smallCircleSize);
+		.VerticalInParent(@smallCircleSize);
+		.Circle;
+		
+		//Upon hovering over a small circle, ...
+		&:hover {
+			
+			//decrease the background opacity
+			.homeCircleBackground {
+				opacity: 0.5;
+			}
+			
+			//show the overlay div with text
+			.smallCircleOverlay {
+				visibility: visible;
+				z-index: 1000;
+			}
+		}
+		
+		//Overlay div within small circles containing text
+		.smallCircleOverlay {
+			//position the overlay on top of the background circle
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			
+			//give it a circle shape and horizontally center its children
+			.Circle;
+			.HorizontallyCentered;
+			
+			//this technique is used to vertically center its child div
+			display: table;
+			
+			//only visible when the circle is hovered over
+			visibility: hidden;
+			
+			//color and size of text within
+			color: @yellow;
+			font-family: @secondaryFont;
+			font-size: 16px;
+			
+			//style the child div to be vertically centered within the overlay
+			div {
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+	}
+	
+	#world1CreatureCircle {
+		.HomeWorldCircle('/images/jungleButterfly.png');
+        .smallCircleOverlay {
+            color: @yellow;
+        }
+	}
+	
+	#world1ItemCircle {
+		.HomeWorldCircle('/images/jungleBerry.png');
+        .smallCircleOverlay {
+            color: @yellow;
+        }
+	}
+	
+	#world1VillainCircle {
+		.HomeWorldCircle('/images/jungleSnake.png');
+        .smallCircleOverlay {
+            color: @yellow;
+        }
+	}
+	
+	#world2CreatureCircle {
+		.HomeWorldCircle('/images/oceanFish.png');
+        .smallCircleOverlay {
+            color: @black !important;
+        }
+	}
+	
+	#world2ItemCircle {
+		.HomeWorldCircle('/images/oceanPearl.png');
+        .smallCircleOverlay {
+            color: @black !important;
+        }
+	}
+	
+	#world2VillainCircle {
+		.HomeWorldCircle('/images/oceanJellyfish.png');
+        .smallCircleOverlay {
+            color: @black !important;
+        }
+	}
+	
+	#world3CreatureCircle {
+		.HomeWorldCircle('/images/icePenguin.png');
+        .smallCircleOverlay {
+            color: @pink !important;
+        }
+	}
+	
+	#world3ItemCircle {
+		.HomeWorldCircle('/images/iceSnowflake.png');
+        .smallCircleOverlay {
+            color: @pink !important;
+        }
+	}
+	
+	#world3VillainCircle {
+		.HomeWorldCircle('/images/iceKillerWhale.png');
+        .smallCircleOverlay {
+            color: @pink !important;
+        }
+	}
+
+

@@ -1,0 +1,248 @@
+<template name="Dashboard">
+
+	<!--overall container for all dashboard elements-->
+	<div id="dashboardBody">
+
+		<!--DON'T YOU DARE PUT ANYTHING BEFORE THIS IMAGE DIV!!!-->
+		<div id="dashboardImageDiv"></div>
+
+		<div id="dashboardContainerDiv">
+
+			<div id="dashboardInnerDiv">
+
+				<div id="dashboardHeaderDiv">
+					<h1>
+						{{#if currentUser}}
+							{{userName}}'s Dashboard
+						{{else}}
+							Please log in or sign up to view your dashboard.
+						{{/if}}
+					</h1>
+					<!-- {{#if currentUser}}
+						<h2>Weekly Faves: {{{weeklyFaves}}}</h2>
+					{{/if}} -->
+				</div>
+
+				{{#if currentUser}}
+
+				<div class="row">
+					<!-- <div class="col-md-6" id="dashboardExpColumn">
+						<h3>Rank: {{{experienceLevel}}}</h3>
+						<p id="dashboardExpDescription">
+							{{{unlockedWorldTitles}}}.<br>
+							{{{masteredWorldTitles}}}.<br>
+						</p>
+					</div> -->
+					<div class="row" id="dashboardWorldProgressColumn">
+						<h3>Current Level: {{{experienceLevel}}}</h3>
+						<p id="dashboardExpDescription">Expand any world to view more details on your progress.</p>
+						{{#each worldObjects}}
+							<div class="col-md-4">
+								<div class="row dashboardWorldProgressContainer">
+									<div class="col-md-5 dashboardProgressTitle" id="{{dashboardProgressId}}Title">
+										<p>
+											<a role="button" data-toggle="collapse" href="#collapseBox{{prefix}}" aria-expanded="false" aria-controls="collapseBox{{prefix}}">
+			          				{{title}}<span class="caret"></span>
+			        				</a>
+			        			</p>
+									</div>
+									<div class="col-md-7 dashboardProgressColumn">
+										{{{leftProgress tag}}}
+										<div class="progress" id="{{dashboardProgressId}}">
+											<div class="progress-bar dashboardProgressBar" role="progressbar" aria-valuenow="{{worldProgressPercentage tag}}" aria-valuemin="0	" aria-valuemax="{{pointsToUnlock}}" style="width: {{worldProgressPercentage tag}};">
+												{{worldProgressPercentage tag}}
+											</div>
+										</div>
+										{{{rightProgress tag}}}
+									</div>
+								</div>
+								<div class="collapse" id="collapseBox{{prefix}}">
+									<ul class="list-group">
+  									<li class="list-group-item">
+  										<div class="row dashboardWorldProgressContainer">
+												<div class="col-md-5 dashboardProgressTitle" id="{{dashboardProgressId}}Title">
+													<p>
+														{{dfaActivity}}
+			        						</p>
+												</div>
+												<div class="col-md-7 dashboardProgressColumn">
+													{{{leftDFAProgress tag}}}
+													<div class="progress" id="{{dashboardProgressId}}">
+														<div class="progress-bar dashboardProgressBar" role="progressbar" aria-valuenow="{{worldDFAPercentage tag}}" aria-valuemin="0	" aria-valuemax="{{minDFA}}" style="width: {{worldDFAWidth tag}};">
+															{{worldDFAPercentage tag}}
+														</div>
+													</div>
+													{{{rightDFAProgress tag}}}
+												</div>
+											</div>
+  									</li>
+  									<li class="list-group-item">
+  										<div class="row dashboardWorldProgressContainer">
+												<div class="col-md-5 dashboardProgressTitle" id="{{dashboardProgressId}}Title">
+													<p>
+														<a role="button" data-toggle="collapse" href="#collapsePL{{prefix}}" aria-expanded="false" aria-controls="collapsePL{{prefix}}">
+			          							{{plActivity}}<span class="caret"></span>
+			        							</a>
+			        						</p>
+												</div>
+												<div class="col-md-7 dashboardProgressColumn">
+													{{{leftProgress tag}}}
+													<div class="progress" id="{{dashboardProgressId}}">
+														<div class="progress-bar dashboardProgressBar" role="progressbar" aria-valuenow="{{worldPLPercentage tag}}" aria-valuemin="0" aria-valuemax="{{pointsToUnlock}}" style="width: {{worldPLPercentage tag}};">
+															{{worldPLPercentage tag}}
+														</div>
+													</div>
+													{{{rightProgress tag}}}
+												</div>
+											</div>
+											<div class="collapse" id="collapsePL{{prefix}}">
+												<ul class="list-group">
+													<li class="list-group-item">
+														<div class="row dashboardWorldProgressContainer">
+															<div class="col-md-6 dashboardProgressTitle" id="{{dashboardProgressId}}Title">
+																<p>
+																	Choosing String
+			        									</p>
+															</div>
+															<div class="col-md-6 dashboardProgressColumn">
+																{{{leftProgress tag}}}
+																<div class="progress" id="{{dashboardProgressId}}">
+																	<div class="progress-bar dashboardProgressBar" role="progressbar" aria-valuenow="{{worldPLSkillPercentage tag String}}" aria-valuemin="0	" aria-valuemax="{{minString}}" style="width: {{worldPLSkillWidth tag String}};">
+																		{{worldPLSkillPercentage tag "String"}}
+																	</div>
+																</div>
+																{{{rightPLSkillProgress tag "String"}}}
+															</div>
+														</div>
+													</li>
+													<li class="list-group-item">
+														<div class="row dashboardWorldProgressContainer">
+															<div class="col-md-6 dashboardProgressTitle" id="{{dashboardProgressId}}Title">
+																<p>
+																	Choosing <em>i</em>
+			        									</p>
+															</div>
+															<div class="col-md-6 dashboardProgressColumn">
+																{{{leftProgress tag}}}
+																<div class="progress" id="{{dashboardProgressId}}">
+																	<div class="progress-bar dashboardProgressBar" role="progressbar" aria-valuenow="{{worldPLSkillPercentage tag I}}" aria-valuemin="0	" aria-valuemax="{{minI}}" style="width: {{worldPLSkillWidth tag I}};">
+																		{{worldPLSkillPercentage tag "I"}}
+																	</div>
+																</div>
+																{{{rightPLSkillProgress tag "I"}}}
+															</div>
+														</div>
+													</li>
+													<li class="list-group-item">
+														<div class="row dashboardWorldProgressContainer">
+															<div class="col-md-6 dashboardProgressTitle" id="{{dashboardProgressId}}Title">
+																<p>
+																	Choosing Reason
+			        									</p>
+															</div>
+															<div class="col-md-6 dashboardProgressColumn">
+																{{{leftProgress tag}}}
+																<div class="progress" id="{{dashboardProgressId}}">
+																	<div class="progress-bar dashboardProgressBar" role="progressbar" aria-valuenow="{{worldPLSkillPercentage tag Reason}}" aria-valuemin="0	" aria-valuemax="{{minReason}}" style="width: {{worldPLSkillWidth tag Reason}};">
+																		{{worldPLSkillPercentage tag "Reason"}}
+																	</div>
+																</div>
+																{{{rightPLSkillProgress tag "Reason"}}}
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+  									</li>
+									</ul>
+								</div>
+							</div>
+						{{/each}}
+					</div>
+				</div> <!--end progress row-->
+
+				<div class="row" id="dashboardFavedExpRow">
+					<h2>Number of Faves Left for This Week: {{{weeklyFaves}}}</h2>
+					<p class="purple">You start out with three faves every week that you can use to "fave" other students' explanations. Below are all the explanations that you have faved.</p>
+					<h3>My Faved Explanations</h3>
+					{{#each favedExplanations}}
+						<div class="row">
+							{{#each row}}
+								<div class="col-md-3">
+									<div class="dashboardFavedExpCard" id="{{_id}}">
+										<span class="tagSpan {{tagClass}}">{{tag}}</span>
+    								<span class="faveCountSpan alreadyFaved">{{faveCount}} &#9829;</span><br>
+    								<h4>{{title}}</h4>
+    								<span class="authorSpan">By {{author}}</span><br>
+    								<span class="authorSpan">{{formattedDate date}}</span><br>
+    								<p class="textParagraph">{{text}}</p>
+									</div>
+								</div>
+							{{/each}}
+						</div>
+						<br>
+					{{/each}}
+				</div> <!--end faved explanations row-->
+
+				<div class="row" id="dashboardWrittenExpRow">
+					<h3>My Explanations</h3>
+					{{#each writtenExplanations}}
+						<div class="row">
+							{{#each row}}
+								<div class="col-md-3">
+									<div class="dashboardWrittenExpCard" id="{{_id}}">
+										<span class="tagSpan {{tagClass}}">{{tag}}</span>
+    								<span class="faveCountSpan userWrote">{{faveCount}} &#9829;</span><br>
+    								<h4>{{title}}</h4>
+    								<span class="authorSpan">{{formattedDate date}}</span><br>
+    								<p class="textParagraph">{{text}}</p>
+									</div>
+								</div>
+							{{/each}}
+						</div>
+						<br>
+					{{/each}}
+				</div> <!--end written explanations row-->
+
+				<br><br><br>
+
+				{{/if}} <!--end logged in content-->
+
+			</div> <!--end dashboardInnerDiv-->
+
+		</div> <!--end dashboardContainerDiv-->
+
+		<div id="dashboardFavedExpLightbox">
+			{{#with currentExp}}
+				<h4>{{title}}</h4>
+				{{text}}
+			{{/with}}
+		</div>
+
+		<div id="dashboardWrittenExpLightbox">
+			{{#with currentExp}}
+				<h4>Edit Explanation</h4>
+				<div class="input-group">
+  				<span class="input-group-addon">Title: </span>
+  				<input type="text" class="form-control" id="editExpTitle" value="{{title}}" aria-describedby="basic-addon1">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">Tag: </span>
+					<input type="text" class="form-control" id="editExpTag" value="{{tag}}" aria-describedby="editExpTag">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">Text: </span>
+					<textarea id="editExpText" maxlength="50">{{text}}</textarea>
+				</div>
+				<button class="closeButton" id="saveExpEdits">Save</button>
+				<button class="closeButton" id="cancelExpEdits">Cancel</button>
+			{{/with}}
+		</div>
+
+		{{> Navigation}}
+
+	</div> <!--end dashboardBody-->
+
+	
+
+</template>

@@ -1,0 +1,31 @@
+@import "colors";
+@import "mixins";
+@import "variables";
+
+#loginWrapperDiv {
+	a {
+		text-decoration: none !important;
+	}
+	
+	#login-dropdown-list {
+		margin: 0px !important;
+		position: absolute;
+		top: 22.5px !important;
+		left: -200px !important;
+		background-color: @generalBackground !important;
+		border-color: @iceColor !important;
+		.RoundedShape(10px);
+		
+		label {
+			.GeneralText;
+			color: @oceanColor;
+		}
+		
+		.login-button {
+			background-color: @generalText !important;
+			border-color: @generalText !important;
+			color: @generalBackground !important;
+		}
+	}
+}
+

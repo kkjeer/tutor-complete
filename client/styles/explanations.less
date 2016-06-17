@@ -1,0 +1,131 @@
+@import "colors";
+@import "mixins";
+
+@menuHeight: 50px;
+
+#explanationsBody {
+	.PageBody;
+}
+
+#explanationsImageDiv {
+	.PageImageDiv;
+}
+
+#explanationsContainerDiv {
+	.PageContainerDiv;
+}
+
+#explanationsInnerDiv {
+	.PageInnerDiv;
+}
+
+#explanationsFixedMenu {
+	position: fixed;
+	top: 40px;
+	left: 0px;
+	right: 0px;
+	z-index: 900;
+	height: @menuHeight;
+	.HorizontallyCentered;
+	//border: 1px solid yellow;
+	font-family: @primaryFont;
+	color: @generalText;
+	background-color: @generalBackground;
+	
+	.col {
+		//border: 1px solid red;
+		height: 100%;
+	}
+	
+	#expSortSelect {
+		width: 100px !important;
+		color: @black;
+	}
+	
+	#expFilterAutocomplete {
+		background-color: white !important;
+		height: 100% !important;
+		color: @black;
+	}
+	
+	#expFilterAutocomplete {
+		vertical-align: baseline !important;
+	}
+	
+	.tt-menu {
+		background-color: white !important;
+		color: black;
+		width: 100% !important;
+		text-align: left;
+		.RoundedShape(@inputBorderRadius);
+		border: 1px solid @inputFocusColor;
+		max-height: 150px;
+		overflow-y: auto;
+		
+		.tt-suggestion {
+			padding: 2px !important;
+			
+			&:hover {
+				cursor: pointer;
+				background-color: @iceColor !important;
+			}
+		}
+	}
+	
+	#createExpButton {
+		.StyledButton;
+		font-size: 28px;
+		@buttonSize: 40px;
+		height: @buttonSize;
+		width: @buttonSize;
+		line-height: @buttonSize;
+		.Circle;
+	}
+}
+
+#explanationsHeaderDiv {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	padding: 5px;
+	margin-top: @menuHeight;
+	margin-bottom: 5px;
+	
+	h1 {
+		color: @bigHeaderText;
+	}
+	
+	h2 {
+		color: @bigHeaderText;
+	}
+}
+
+.expCard {
+	.Card(160px, 1);
+}
+
+#viewExpLightbox {
+	.LightboxCard;
+}
+
+#createExpLightbox {
+	.LightboxCard;
+	height: 500px;
+	width: 500px;
+	.input-group {
+		margin-bottom: 10px;
+		span, input {
+			height: 30px;
+		}
+	}
+	
+	textarea {
+		height: 300px;
+		width: 100%;
+		color: black;
+	}
+	
+	button {
+		background-color: @generalText;
+		color: @generalBackground;
+	}
+}

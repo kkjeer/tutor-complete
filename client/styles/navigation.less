@@ -1,0 +1,35 @@
+@import "colors";
+@import "mixins";
+
+#topNavBody {
+	//background: transparent;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 900;
+    font-size: @smallerSize;
+	
+	nav {
+		padding: 0px !important;
+		margin: 0px !important;
+	}
+	
+	.container-fluid, .navbar-collapse {
+		margin: 0px !important;
+		padding: 0px !important;
+		background-color: @generalBackground;
+	}
+	
+	a {
+		font-family: @primaryFont;
+		text-shadow: none !important;
+		color: @navigationText;
+	}
+	
+	span {
+		color: @navigationText;
+		border-top-color: @navigationText;
+		border-bottom-color: @navigationText;
+	}
+}

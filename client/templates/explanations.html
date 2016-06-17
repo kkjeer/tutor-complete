@@ -1,0 +1,113 @@
+<template name="Explanations">
+
+	<!--overall container for all home page elements-->
+	<div id="explanationsBody">
+
+		<!--DON'T YOU DARE PUT ANYTHING BEFORE THIS IMAGE DIV!!!-->
+		<div id="explanationsImageDiv"></div>
+
+		{{#if currentUser}}
+			<div class="row" id="explanationsFixedMenu">
+				<div class="col col-md-2">
+					<h4>Weekly Faves: {{{weeklyFaves}}}</h4>
+				</div>
+				<div class="col col-md-1"></div>
+				<div class="col col-md-2">
+					Sort by:
+					<select id="expSortSelect">
+						{{#each sortFactors}}
+							<option value="{{factor}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="col col-md-5">
+					Filter by title, tag, and author: 
+					<input type="text" class="typeahead" id="expFilterAutocomplete">
+				</div>
+				<div class="col col-md-1"></div>
+				<div class="col col-md-1">
+					<button id="createExpButton">+</button>
+				</div>
+			</div>
+		{{/if}}
+
+		<div id="explanationsContainerDiv">
+
+			<div id="explanationsInnerDiv">
+
+				<div id="explanationsHeaderDiv">
+					<h1>
+						{{#if currentUser}}
+							Explanations
+						{{else}}
+							Please log in or sign up to view the explanations.
+						{{/if}}
+					</h1>
+				</div>
+
+				{{#if currentUser}}
+
+				{{#each sortedExplanations}}
+					<div class="row">
+						{{#each row}}
+							<div class="col-md-3">
+								<div class="expCard" id="{{_id}}">
+									<span class="tagSpan {{tagClass}}">{{tag}}</span>
+  								<span class="faveCountSpan">{{faveCount}} &#9829;</span>
+  								<h4>{{title}}</h4>
+  								<span class="authorSpan">By {{author}}</span><br>
+  								<span class="authorSpan">{{formattedDate date}}</span><br>
+  								<p class="textParagraph">{{text}}</p>
+  								{{#if noFave}}
+  									<br>
+  									<p class="{{faveButtonClass}}">{{faveButtonText}}</p>
+  								{{else}}
+  									<button class="faveButton {{faveButtonClass}}">{{faveButtonText}}</button>
+  								{{/if}}
+								</div>
+							</div>
+						{{/each}}
+					</div>
+					<br>
+				{{/each}}
+
+				<br><br><br>
+
+				{{/if}}
+
+			</div> <!--end explanationsInnerDiv-->
+
+		</div> <!--end explanationsContainerDiv-->
+
+		<div id="viewExpLightbox">
+			{{#with currentExp}}
+				<h4>{{title}}</h4>
+				{{text}}
+			{{/with}}
+		</div>
+
+		<div id="createExpLightbox">
+			<h4>New Explanation</h4>
+			<div class="input-group">
+				<span class="input-group-addon">Title: </span>
+				<input type="text" class="form-control" id="createExpTitle" value="" aria-describedby="createExpTitle">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Tag: </span>
+				<input type="text" class="form-control" id="createExpTag" value="" aria-describedby="createExpTag">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon">Text: </span>
+				<textarea id="createExpText" maxlength="50000"></textarea>
+			</div>
+			<button class="closeButton" id="saveNewExp">Save</button>
+			<button class="closeButton" id="cancelNewExp">Cancel</button>
+		</div>
+
+		{{> Navigation}}
+
+	</div> <!--end dashboardBody-->
+
+	
+
+</template>

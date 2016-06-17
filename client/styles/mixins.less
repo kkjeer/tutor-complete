@@ -1,0 +1,206 @@
+@import "colors";
+@import "variables";
+
+.BackgroundImage(@image) {
+	background-image: url(@image);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.PageBody {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	background-color: @generalBackground;
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: @headerFont;
+    }
+    
+    p {
+        font-size: @primarySize;
+    }
+}
+
+.PageImageDiv {
+	height: 100%;
+	width: 100%;
+}
+
+.PageContainerDiv {
+	margin-top: 40px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	background-color: @generalBackground;
+}
+
+.PageInnerDiv {
+	flex: 1;
+	background-color: @generalBackground;
+}
+
+.PageTextDiv {
+	text-align: center;
+	background-color: @generalBackground;
+}
+
+.HorizontallyCentered {
+	text-align: center;
+}
+
+.GeneralText {
+	color: @generalText;
+	font-family: @primaryFont;
+}
+
+.PrimaryText {
+	font-family: @primaryFont;
+	font-size: @primarySize;
+}
+
+.SecondaryText {
+	font-family: @secondaryFont;
+	font-size: @secondarySize;
+}
+
+.EllipsisText (@linesToShow: 8, @fontSize: 14px, @lineHeight: 1.5) {
+	display: block;
+	display: -webkit-box;
+	max-width: 400px;
+	height: @fontSize * @lineHeight * @linesToShow;
+	margin: 0 auto;
+	font-size: @fontSize;
+	line-height: @lineHeight;
+	-webkit-line-clamp: @linesToShow;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.HorizontalInParent (@eltWidth: 90%) {
+	width: @eltWidth;
+	margin: auto;
+}
+
+.VerticalInParent (@eltHeight: 90%) {
+	margin-top: calc((100% - @eltHeight)/2);
+	margin-bottom: calc((100% - @eltHeight)/2);
+}
+
+.Card (@cardHeight: 155px, @textLines: 2){
+	height: @cardHeight;
+	width: 90%;
+	.HorizontallyCentered;
+	.VerticalInParent(@cardHeight);
+	.HorizontalInParent(90%);
+	background-color: lighten(@generalBackground, 0%);
+	color: @generalText;
+	font-family: @primaryFont;
+	box-shadow: 0px 0px 10px 5px #888888;
+	padding: 5px;
+	line-height: 1.75;
+	.tagSpan {
+		float: left;
+	}
+	.faveCountSpan {
+		float: right;
+		color: @highlightText;
+	}
+	h4 {
+		color: @bigHeaderText;
+	}
+	.authorSpan {
+		color: @headerText;
+	}
+	.textParagraph {
+		margin-top: 5px;
+		.EllipsisText(@textLines);
+	}
+	.faveButton {
+		.StyledButton;
+		margin-top: 3px;
+	}
+	//only used if the paragraph containing faved info doesn't have a <br> preceding it
+	.faveParagraph {
+		margin-top: 10px;
+	}
+	
+	
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.LightboxCard {
+	.Card;
+	background-color: @generalBackground;
+	font-family: @primaryFont;
+	color: @generalText;
+	padding: 10px;
+	height: 400px;
+	width: 400px;
+	.HorizontallyCentered;
+	display: none;
+	
+	&:hover {
+		cursor: default;
+	}
+}
+
+.StyledButton {
+	background: @generalBackground;
+	color: @highlightText;
+	border: 1px solid @iceColor;
+	.RoundedShape(5px);
+}
+ 
+.RoundedShape (@radius: 30px) {
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;  
+}
+
+.Circle {
+	.RoundedShape(9999px);
+}
+
+.FlipY {
+	-moz-transform: scale(-1, 1);
+	-webkit-transform: scale(-1, 1);
+	-o-transform: scale(-1, 1);
+	-ms-transform: scale(-1, 1);
+	transform: scale(-1, 1);	
+}
+
+.HomeWorldCircle (@bgImage) {
+	.homeCircleBackground {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		.Circle;
+		.BackgroundImage(@bgImage);
+	}
+}
+
+.DashboardWorldProgress (@bgColor) {
+	display: inline-block !important;
+	width: 50%;
+	margin: 10px 5px -5px 5px;
+	
+	background-image: none !important;
+	background-color: lighten(@bgColor, 25%);
+	
+	.dashboardProgressBar {
+		background-image: none !important;
+		background-color: @bgColor !important;
+		color: darken(@bgColor, 40%);
+		.SecondaryText;
+	}
+}
+
+.SceneDiv {
+	height: 450px;
+}

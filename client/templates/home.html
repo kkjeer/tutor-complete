@@ -1,0 +1,102 @@
+<template name="Home">
+
+	<!--overall container for all home page elements-->
+	<div id="homeBody">
+
+		<!--DON'T YOU DARE PUT ANYTHING BEFORE THIS IMAGE DIV!!!-->
+		<div id="homeImageDiv"></div>
+
+		<div id="homeContainerDiv">
+
+			<div id="homeInnerDiv">
+
+				<div id="homeHeaderDiv">
+					<h1>Tutor-Complete</h1>
+					<p>
+						In the three worlds of the animal kingdom, villains have stolen the items that the heroes need to survive.
+						In order to reclaim their items, the heroes must use logic to navigate through a series of obstacles 
+						and defeat the villains in a battle of wits. Join our heroes on their quest to complete their items 
+						and restore order to their worlds.
+					</p>
+				</div>
+
+				<div class="row">
+
+					{{#each worldObjects}}
+						<div class="col-md-4 homeWorldDiv">
+							<h3 class="homeWorldHeader">{{title}}</h3>
+							<div class="homeCircleContainer">
+								<a href="{{worldLink}}">
+									<div class="homeCircle" id="{{circleId}}">
+										<div class="homeCircleOverlay">
+											<div>
+												<p class="homeMaster">
+													{{#if currentUser}}
+														{{#if unlockedWorld tag}}
+															Unlocked &#10003;
+														{{else}}
+															Locked &#10007;
+														{{/if}}
+														<br>
+														<!-- {{worldStatus tag}} -->
+													{{/if}}
+												</p>
+											</div>
+										</div>
+										<div class="homeCircleBackground"></div>
+									</div>
+								</a>
+							</div>
+							<h4 class="homeWorldHeader">Difficulty: {{difficulty}}</h4><br>
+							<div class="row smallCircleRow">
+								<div class="col-md-4">
+									<div class="smallCircleContainer">
+										<div class="smallCircle" id="{{creatureId}}">
+											<div class="smallCircleOverlay">
+												<div>
+													Hero
+												</div>
+											</div>
+											<div class="homeCircleBackground"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="smallCircleContainer">
+										<div class="smallCircle" id="{{itemId}}">
+											<div class="smallCircleOverlay">
+												<div>
+													Item
+												</div>
+											</div>
+											<div class="homeCircleBackground"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="smallCircleContainer">
+										<div class="smallCircle" id="{{villainId}}">
+											<div class="smallCircleOverlay">
+												<div>
+													Villain
+												</div>
+											</div>
+											<div class="homeCircleBackground"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				  {{/each}}
+
+				</div> <!--end row-->
+
+			</div> <!--end homeInnerDiv-->
+
+		</div> <!--end homeContainerDiv-->
+
+		{{> Navigation}}
+
+	</div> <!--end homeBody-->
+
+</template>

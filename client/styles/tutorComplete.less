@@ -1,0 +1,105 @@
+@import "colors";
+@import "mixins";
+@import "variables";
+
+body {
+	background-color: @generalBackground !important;
+    overflow-x: hidden;
+}
+
+.jungleText {
+	color: @jungleColor;
+}
+.oceanText {
+	color: @oceanColor;
+}
+.iceText {
+	color: @iceColor;
+}
+
+button {
+  	border: none;
+}
+
+.userWrote {
+	color: @bigHeaderText !important;
+	border: none !important;
+}
+
+.favesGone {
+	color: darken(@iceColor, 50%) !important;
+	border: none !important;
+}
+
+.alreadyFaved {
+	color: @headerText !important;
+	border: none !important;
+}
+
+.clickToFave {
+	color: @highlightText !important;
+}
+
+.purple {
+	color: @purpleText;
+}
+
+.orange {
+	color: @orange;
+}
+
+.green {
+	color: @jungleColor;
+}
+
+.blue {
+    color: @oceanColor;
+}
+
+.pink {
+	color: @pink;
+}
+
+.gray {
+    color: @darkGray;
+}
+
+.yellow {
+    color: @gold;
+}
+
+.red {
+    color: @red;
+}
+
+.brown {
+    color: @brown;
+}
+
+.black {
+	color: black;
+}
+
+.white {
+    color: white;
+}
+
+.purpleFlip {
+	.purple;
+	.FlipY;
+}
+
+.orangeFlip {
+	.orange;
+	.FlipY;
+}
+
+.greenFlip {
+	.green;
+	.FlipY;
+}
+
+.pinkFlip {
+	.pink;
+	.FlipY;
+}

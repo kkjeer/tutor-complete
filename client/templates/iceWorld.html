@@ -1,0 +1,226 @@
+<template name="IceWorld">
+
+	<div id="iceworldBody">
+
+		{{#if currentUser}}
+
+		{{#if inIceberg}}
+			<div id="iceworldScoreDiv">
+				<p>Activity Mastery Level: {{{dfaScoreIceberg}}}<br>Used {{hintsUsed}} out of {{maxHints}} hints.</p>
+			</div>
+		{{else}}
+			{{#if inTower}}
+				<div id="iceworldScoreDiv">
+					<p>Activity Mastery Level: {{towerPointsDisplay}}</p>
+				</div>
+			{{/if}}
+		{{/if}}
+
+		<div id="icebergHintCover"><p>Calculating Hints...Please Wait</p></div>
+
+		<div id="iceworldContainerDiv">
+
+			<div id="iceworldInnerDiv">
+
+				<div class="row" id="iceworldHeaderDiv">
+					<!--Iceberg Activity-->
+					{{#if inIceberg}}
+						<div class="col-md-4">
+							<p>{{{icebergInstructions}}}</p>
+							<!-- <p>Activity Score: {{{dfaScoreIceberg}}}<br>Used {{hintsUsed}} out of {{maxHints}} hints.</p> -->
+						</div>
+						<div class="col-md-4" id="iceworldMiddle">
+							<p>{{{icebergHeader}}}</p>
+							<!-- <p id="icebergHintText">Used {{hintsUsed}} out of {{maxHints}} hints.</p> -->
+							<p id="iceworldBtnInstruc">{{{icebergBtnInstruc}}}</p>
+							<button id="nextLangButton">Next Pattern</button>
+						</div>
+						<div class="col-md-4" id="iceworldButtonDiv">
+							<button id="addStoneButton">+</button>
+							<button id="finalStoneButton">&#10003;</button>
+							<button id="purplePenButton">&#9998;</button>
+							<button id="orangePenButton">&#9998;</button>
+							<button id="deleteButton">X</button>
+							<br>
+							<button id="testButton">TEST</button>
+							<button id="resetButton">&#10226;</button>
+							<button id="icebergHintButton">HINT</button>
+							<button id="backButton"></button>
+							<button id="currentPen">{{{icebergPen}}}</button>
+						</div>
+					{{else}}
+						<!--Tower Activity-->
+						{{#if inTower}}
+							<div class="col-md-4" id="towerVillainDiv">
+								<div class="row">
+									<div class="col-md-2">
+										Villain
+										<img id="towerVillainImage" src="images/iceKillerWhale.png"><br>
+										<button id="towerInfoButton">?</button>
+									</div>
+									<div class="col-md-10">
+										{{#if choosingLanguage}}
+											<p>Choose a language to prove nonregular.</p>
+										{{else}}
+											{{#if choosingString}}
+												<p>Choose a string in the language to pump from the choices on the right.</p>
+											{{else}}
+												{{#if choosingParsing}}
+													There {{numParsingChoices}} I can parse this string into xyz. For each parsing, you need
+													to show that I can't pump the string and stay in the language.
+													{{#if suboptimalParsing}}
+														<br>Picking a different string might result in fewer parsings. Would you like to pick a different string?
+													{{/if}}
+												{{else}}
+													{{#if choosingI}}
+														Now give a number <em>i</em> where the pumped string xy<sup><em>i</em></sup>z is not in the language.<br>
+														{{{tableErrorMessage}}}
+													{{else}}
+														{{#if choosingReason}}
+															Why does this fail?<br>
+															{{{towerErrorMessage}}}
+														{{else}}
+															{{{towerErrorMessage}}}
+														{{/if}}
+													{{/if}}
+												{{/if}}
+											{{/if}}
+										{{/if}}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4" id="towerMiddleDiv">
+								{{#if choosingLanguage}}
+									<select id="towerLangSelect">
+										<option>Choose Language</option>
+										{{#each towerLanguages}}
+											<option value={{langId}} class={{className}}>{{{description}}}</option>
+										{{/each}}
+									</select>
+								{{else}}
+									<p>Language: {{{towerLang}}}, Pumping Length: <em>p</em></p>
+									{{#if choosingString}}
+										
+									{{/if}}
+									{{#if choosingParsing}}
+										String: {{{stringChoice}}}<br>
+										{{#if suboptimalParsing}}
+											<button id="changeStringButton">Change String</button>
+										{{/if}}
+									{{/if}}
+									{{#if choosingI}}
+										String: {{{stringChoice}}}<br>
+										Parsing: {{{parsingChoice}}}<br>
+										<em>i</em>: {{{iChoice}}}
+									{{/if}}
+									{{#if choosingReason}}
+										String: {{{stringChoice}}}<br>
+										Parsing: {{{parsingChoice}}}<br>
+										<em>i</em>: {{{iChoice}}}
+									{{/if}}
+								{{/if}}
+							</div>
+							<div class="col-md-4" id="towerHeroDiv">
+								<div class="row">
+									<div class="col-md-10">
+										{{#if choosingString}}
+											{{#each stringChoices}}
+												<button class="stringChoiceButton">{{{choice}}}</button><br>
+											{{/each}}
+										{{else}}
+											{{#if choosingParsing}}
+												{{#each parsingChoices}}
+													<button class={{className}} disabled={{isDisabled}}>{{{choice}}}</button><br>
+												{{/each}}
+											{{else}}
+												{{#if choosingI}}
+													{{#each iChoices}}
+														<button class="iChoiceButton">{{{choice}}}</button><br>
+													{{/each}}
+												{{else}}
+													{{#if choosingReason}}
+														{{#each reasonChoices}}
+															<button class="reasonChoiceButton">{{{choice}}}</button><br>
+														{{/each}}
+													{{/if}}
+												{{/if}}
+											{{/if}}
+										{{/if}}
+									</div>
+									<div class="col-md-2">
+										Hero
+										<img id="towerHeroImage" src="images/icePenguin.png"><br>
+										<button id="towerBackButton"></button>
+									</div>
+								</div>
+							</div>
+						{{else}}
+							<!--IceWorld-->
+							<div class="col-md-4">
+								<p>{{{iwInstructions}}}</p>
+							</div>
+							<div class="col-md-4" id="iceworldMiddle">
+								<h1>Ice World</h1>
+							</div>
+							<div class="col-md-4" id="iceworldButtonDiv">
+								<div class="row smallCircleRow">
+								<div class="col-md-4">
+									<div class="smallCircleContainer">
+										<div class="smallCircle" id="world3CreatureCircle">
+											<div class="smallCircleOverlay">
+												<div>
+													Hero
+												</div>
+											</div>
+											<div class="homeCircleBackground"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="smallCircleContainer">
+										<div class="smallCircle" id="world3ItemCircle">
+											<div class="smallCircleOverlay">
+												<div>
+													Item
+												</div>
+											</div>
+											<div class="homeCircleBackground"></div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="smallCircleContainer">
+										<div class="smallCircle" id="world3VillainCircle">
+											<div class="smallCircleOverlay">
+												<div>
+													Villain
+												</div>
+											</div>
+											<div class="homeCircleBackground"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+						{{/if}}
+					{{/if}}
+				</div>
+
+				<div id="iceworldSceneDiv"></div>
+
+			</div>
+
+		</div>
+
+		{{else}}
+
+		<br><br><br>
+		<h3 class="white">Please log in to play the IceWorld activities.</h3>
+
+		{{/if}}
+
+		{{> Navigation}}
+
+	</div>
+
+</template>

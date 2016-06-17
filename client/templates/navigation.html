@@ -1,0 +1,71 @@
+<template name="Navigation">
+	<div id="topNavBody">
+		<nav class="navbar navbar-fixed-top" id="topNav">
+		  <div class="container-fluid">
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+
+		      	<!--Home link-->
+		        <li><a href="/"><strong>Home</strong></a></li>
+
+		        <!--Dashboard link-->
+		        {{#if currentUser}}
+		        	<li><a href="/dashboard">Dashboard</a></li>
+		        {{/if}}
+
+		        <!--Worlds dropdown-->
+		        <li class="dropdown">
+		          <a href="/worlds" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          	Worlds <span class="caret"></span>
+		          </a>
+		          <ul class="dropdown-menu">
+		          	{{#each worldObjects}}
+		          		<li><a href="{{worldLink}}">{{title}}</a></li>
+		          	{{/each}}
+		          </ul>
+		        </li>
+
+		        <!--Explanations link-->
+		        <li><a href="/explanations">Explanations</a></li>
+
+		        <!--Created activities dropdown-->
+		        <!-- <li class="dropdown">
+		          <a href="/custom" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          	Created Activities <span class="caret"></span>
+		          </a>
+		          <ul class="dropdown-menu">
+		          	<li><a href="/createactivity">Create Your Own Activity</a></li>
+		          	<li><a href="/customactivities">View All Created Activities</a></li>
+		          </ul>
+		        </li> -->
+
+		        <!--Tutorials dropdown-->
+		        <!--<li class="dropdown">
+		          <a href="/tutorials" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          	Tutorials <span class="caret"></span>
+		          </a>
+		          <ul class="dropdown-menu">
+		          	{{#each worldObjects}}
+		          		<li><a href="{{tutorialLink}}">{{title}}</a></li>
+		          	{{/each}}
+		          </ul>
+		        </li>-->
+
+		        <!--About link-->
+		        <!--<li><a href="/about">About</a></li>-->
+
+		      </ul>
+
+		      <ul class="nav navbar-nav navbar-right">
+		      	<!--Login controls-->
+		        <li><a>{{> LoginControls}}</a></li>
+		      </ul>
+
+		    </div> <!--end navbar-collapse-->
+
+		  </div> <!--end container-fluid-->
+
+		</nav> <!--end nav-->
+
+	</div> <!--end topnav body-->
+</template>

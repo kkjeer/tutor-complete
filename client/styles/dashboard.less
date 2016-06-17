@@ -1,0 +1,199 @@
+@import "colors";
+@import "mixins";
+
+#dashboardBody {
+	.PageBody;
+}
+
+#dashboardImageDiv {
+	.PageImageDiv;
+}
+
+#dashboardContainerDiv {
+	.PageContainerDiv;
+}
+
+#dashboardInnerDiv {
+	.PageInnerDiv;
+}
+
+#dashboardTextDiv {
+	.PageTextDiv;
+}
+
+#dashboardHeaderDiv {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	padding: 5px;
+	margin-bottom: 5px;
+	
+	h1 {
+		color: @bigHeaderText;
+	}
+	
+	h2 {
+		color: @bigHeaderText;
+	}
+}
+
+#dashboardExpColumn {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	color: @headerText;
+	
+	#dashboardExpDescription {
+		.PrimaryText;
+		line-height: 1.75;
+		color: @generalText !important;
+		margin-top: 5px;
+	}
+}
+
+#dashboardWorldProgressColumn {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	color: @headerText;
+    
+    #dashboardExpDescription {
+		.PrimaryText;
+		line-height: 1.75;
+		color: @generalText !important;
+		margin-top: 5px;
+	}
+    
+    .panel-heading {
+        background-image: none !important;
+        background-color: black !important;
+    }
+    
+    .list-group-item {
+        background-image: none !important;
+        background-color: darken(@generalBackground, 10%) !important;
+        p {
+            font-size: 15px !important;
+        }
+    }
+	
+	.dashboardWorldProgressContainer {
+		width: 95%;
+		text-align: left;
+        padding-left: 15px;
+		
+		.dashboardProgressTitle {
+			p, a {
+				margin-top: 15px;
+				.PrimaryText;
+			}
+		}
+		
+		#dashboardJungleProgressTitle {
+			color: @jungleColor;
+            a {
+                color: @jungleColor;
+            }
+		}
+		#dashboardOceanProgressTitle {
+			color: @oceanColor;
+            a {
+                color: @oceanColor;
+            }
+		}
+		#dashboardIceProgressTitle {
+			color: @iceColor; 
+            a {
+                color: @iceColor;
+            }
+		}
+		
+		.dashboardProgressColumn {
+			p {
+				display: inline-block;
+				margin-top: 10px;
+			}
+			
+			.dashboardMaster {
+				color: @highlightText;
+				.SecondaryText;
+			}
+			.dashboardUnlock {
+				color: @generalText;
+				.SecondaryText;
+			}
+		}
+	}
+}
+
+#dashboardJungleProgress {
+	.DashboardWorldProgress(@jungleColor);
+}
+
+#dashboardOceanProgress {
+	.DashboardWorldProgress(@dragonvaleBlue);
+}
+
+#dashboardIceProgress {
+	.DashboardWorldProgress(darken(@gray, 40%));
+}
+
+#dashboardFavedExpRow {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	margin-left: 5px;
+	margin-right: 5px;
+	
+    h2 {
+        color: @bigHeaderText;
+    }
+    
+	h3 {
+		color: @headerText;
+	}
+	
+	.dashboardFavedExpCard {
+		.Card;
+	}
+}
+
+#dashboardWrittenExpRow {
+	.HorizontallyCentered;
+	font-family: @primaryFont;
+	margin-left: 5px;
+	margin-right: 5px;
+	
+	h3 {
+		color: @headerText;
+	}
+	
+	.dashboardWrittenExpCard {
+		.Card;
+	}
+}
+
+#dashboardFavedExpLightbox {
+	.LightboxCard;
+}
+
+#dashboardWrittenExpLightbox {
+	.LightboxCard;
+	height: 500px;
+	width: 500px;
+	.input-group {
+		margin-bottom: 10px;
+		span, input {
+			height: 30px;
+		}
+	}
+	
+	textarea {
+		height: 300px;
+		width: 100%;
+		color: black;
+	}
+	
+	button {
+		background-color: @generalText;
+		color: @generalBackground;
+	}
+}
+
+
